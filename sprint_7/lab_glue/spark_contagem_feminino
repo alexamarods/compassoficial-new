@@ -1,0 +1,42 @@
+import sys
+from awsglue.transforms import *
+from awsglue.utils import getResolvedOptions
+from pyspark.context import SparkContext
+from awsglue.context import GlueContext
+from awsglue.job import Job
+from pyspark.sql import Row
+from pyspark.sql.functions import upper
+from pyspark.sql import functions as F
+
+## @params: [JOB_NAME]
+args = getResolvedOptions(sys.argv, ['JOB_NAME', 'S3_INPUT_PATH', 'S3_TARGET_PATH'])
+
+sc = SparkContext()
+glueContext = GlueContext(sc)
+spark = glueContext.spark_session
+job = Job(glueContext)
+job.init(args['JOB_NAME'], args)
+
+# Lendo os dados de S3
+dynamic_frame = glueContext.create_dynamic_frame.from_options(
+    connection_type="s3",
+    connection_options={"paths": [args['S3_INPUT_PATH']], "recurse":True}, 
+    format="csv", 
+    format_options={"withHeader": True, "delimiter": ","}
+)
+
+# Convertendo o DynamicFrame para DataFrame para manipulação mais fácil
+data_frame = dynamic_frame.toDF()
+
+# Filtrando apenas registros femininos
+data_frame_f = data_frame.filter(data_frame.sexo == "F")
+
+# Convertendo a coluna 'total' para IntegerType para realizar a soma
+data_frame_f = data_frame_f.withColumn("total", data_frame_f["total"].cast("integer"))
+
+# Encontrando o nome feminino com mais registros e o ano correspondente
+most_common_name = data_frame_f.groupBy("nome", "ano").agg(F.sum("total").alias("total")).orderBy(F.desc("total")).first()
+
+print(f"O nome feminino com mais registros é {most_common_name['nome']} e o ano é {most_common_name['ano']}")
+
+job.commit()

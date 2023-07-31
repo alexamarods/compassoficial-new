@@ -1,0 +1,30 @@
+<<<<<<< HEAD
+from pyspark.sql import SparkSession
+from operator import add
+
+if __name__ == "__main__":
+    spark = SparkSession.builder.appName("Exemplo").getOrCreate()
+    data = spark.sparkContext.textFile("README.md")
+    data.collect()
+    splitdata = data.flatMap(lambda line: line.split(" "))
+    splitdata.collect()
+    mapdata = splitdata.map(lambda word: (word, 1))
+    mapdata.collect()
+    reducedata = mapdata.reduceByKey(add)
+    result = reducedata.collect()
+=======
+from pyspark.sql import SparkSession
+from operator import add
+
+if __name__ == "__main__":
+    spark = SparkSession.builder.appName("Exemplo").getOrCreate()
+    data = spark.sparkContext.textFile("README.md")
+    data.collect()
+    splitdata = data.flatMap(lambda line: line.split(" "))
+    splitdata.collect()
+    mapdata = splitdata.map(lambda word: (word, 1))
+    mapdata.collect()
+    reducedata = mapdata.reduceByKey(add)
+    result = reducedata.collect()
+>>>>>>> 68b468ab0d6fa2593f748e4564902c3c148f32c6
+    print(f"\n\n\n{result}\n\n\n")

@@ -1,0 +1,36 @@
+import sys
+from awsglue.transforms import *
+from awsglue.utils import getResolvedOptions
+from pyspark.context import SparkContext
+from awsglue.context import GlueContext
+from awsglue.job import Job
+from pyspark.sql import Row
+from pyspark.sql.functions import upper
+
+## @params: [JOB_NAME]
+args = getResolvedOptions(sys.argv, ['JOB_NAME', 'S3_INPUT_PATH', 'S3_TARGET_PATH'])
+
+sc = SparkContext()
+glueContext = GlueContext(sc)
+spark = glueContext.spark_session
+job = Job(glueContext)
+job.init(args['JOB_NAME'], args)
+
+# Lendo os dados de S3
+dynamic_frame = glueContext.create_dynamic_frame.from_options(
+    connection_type="s3",
+    connection_options={"paths": [args['S3_INPUT_PATH']], "recurse":True}, 
+    format="csv", 
+    format_options={"withHeader": True, "delimiter": ","}
+)
+
+# Convertendo o DynamicFrame para DataFrame para manipulação mais fácil
+data_frame = dynamic_frame.toDF()
+
+# Alterando a caixa dos valores da coluna nome para maiúsculo
+data_frame = data_frame.withColumn("nome", upper(data_frame["nome"]))
+
+# Imprime as primeiras 10 linhas da coluna 'nome'
+data_frame.select("nome").show(10)
+
+job.commit()
