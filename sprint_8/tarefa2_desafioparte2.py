@@ -5,14 +5,14 @@ from datetime import datetime
 
 def lambda_handler(event, context):
     # Autenticação na API TMDb
-    api_key = "sua_api_key"
+    api_key = "a6867533c6f2d2af89d2f6e43bbb5d1d"
     url = f"https://api.themoviedb.org/3/movie/550?api_key={api_key}"
     response = requests.get(url)
     data = response.json()
 
     # Configuração do S3
     s3 = boto3.client('s3')
-    bucket = 'data-lake-do-fulano'  # substitua pelo nome do seu bucket
+    bucket = 'bucketdesafio2'  # substitua pelo nome do seu bucket
 
     # Formatar a data atual no formato ano/mês/dia
     now = datetime.now()
