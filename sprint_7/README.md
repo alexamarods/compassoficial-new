@@ -1,25 +1,30 @@
+# Sprint 7: Big Data & Processamento Distribuído
 
-README: Repositório de Trabalhos na Compass
-Este repositório é uma coleção de projetos e trabalhos realizados durante minha jornada na Compass, uma empresa líder em tecnologia. Aqui você encontrará um conjunto diversificado de projetos e trabalhos em Python, SQL, além de arquivos de diplomas de cursos concluídos na área de tecnologia.
+Bem-vindo à sétima sprint, onde exploramos as nuances do Big Data e a potência do processamento distribuído. Esta sprint combina teoria e prática, abrangendo dois cursos extensivos e a aplicação prática do aprendizado através de exercícios desafiadores.
 
-Estrutura do Repositório
-O repositório está organizado nas seguintes pastas:
+## 📚 Cursos Concluídos
 
-python_projects: Esta pasta contém todos os projetos e exercícios que foram implementados em Python. Cada projeto possui seu próprio subdiretório, que inclui o código-fonte do projeto, junto com um arquivo README detalhado explicando o propósito do projeto, a abordagem utilizada para resolvê-lo e como executá-lo.
+1. **Learn By Example: Hadoop, MapReduce for Big Data Problems**
+   - Uma imersão profunda no ecossistema Hadoop e no paradigma MapReduce, explorando os desafios e soluções associados ao Big Data.
 
-sql_scripts: Aqui estão todos os scripts SQL escritos para diversos projetos e exercícios. Semelhante aos projetos Python, cada script SQL está em seu próprio subdiretório, acompanhado por um arquivo README que explica o que o script faz e como executá-lo.
+2. **Formação Spark com PySpark: O Curso Completo**
+   - Uma exploração detalhada do framework Apache Spark utilizando PySpark, permitindo o processamento distribuído de grandes volumes de dados.
 
-certificates: Esta pasta contém arquivos de diplomas de diversos cursos concluídos na área de tecnologia. Cada arquivo de diploma está nomeado de forma a indicar o nome do curso e a instituição que o concedeu.
+## 🛠 Exercícios Realizados
 
-Executando os Projetos
-Para executar os projetos Python, você precisará ter Python instalado em sua máquina. A maioria dos projetos foi desenvolvida utilizando Python 3.7, portanto, é recomendável que você tenha essa versão ou superior.
+### **Processamento com Pandas e NumPy**:
+- Utilização das bibliotecas Pandas e NumPy para responder a quatro exercícios específicos, explorando as funcionalidades e eficiências de ambas as bibliotecas em operações de análise de dados.
 
-Os scripts SQL foram escritos para serem executados em um servidor MySQL, portanto, você precisará ter um servidor MySQL em execução para testá-los.
+### **Processamento com Spark via Docker**:
+- Desenvolvimento de um job de processamento usando o framework Spark dentro de um ambiente containerizado com Docker. A ênfase foi dada à configuração do ambiente, ao desenvolvimento eficaz do job e à execução otimizada dentro do container.
 
-Contribuições
-Sinta-se à vontade para explorar, usar para fins educacionais e sugerir melhorias para qualquer projeto neste repositório. Se você tiver alguma dúvida ou sugestão, abra uma issue ou envie um pull request.
+### **Desafio ETL**:
+- Criação de um código Python dedicado ao carregamento de arquivos CSV para a nuvem. Este exercício explorou técnicas avançadas de ETL (Extração, Transformação e Carregamento) para garantir a integridade, eficiência e segurança dos dados durante o processo de carregamento.
 
-Licença
-Todos os projetos neste repositório estão sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+Todos os códigos referentes aos exercícios estão disponíveis aqui.
 
-Aproveite a exploração!
+## 🤝 Contribuições
+
+Se você identificou alguma inconsistência, tem sugestões ou gostaria de contribuir com mais conteúdo, sinta-se à vontade para abrir uma Issue ou um Pull Request.
+
+---
