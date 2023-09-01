@@ -11,7 +11,7 @@ AWS_ACCESS_KEY_ID = config.get('DEFAULT', 'aws_access_key_id')
 AWS_SECRET_ACCESS_KEY = config.get('DEFAULT', 'aws_secret_access_key')
 AWS_SESSION_TOKEN = config.get('DEFAULT', 'aws_session_token')
 
-BUCKET_NAME = 'data-lake-desafio-bruno'
+BUCKET_NAME = 'data-lake-'
 
 
 aws_session = boto3.Session(
